@@ -23,6 +23,8 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:text="Spider-Man: No Way Home"
+        android:textStyle="bold"
+        android:fontFamily="Arial"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPoster"
