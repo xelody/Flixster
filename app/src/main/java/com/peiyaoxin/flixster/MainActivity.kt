@@ -1,5 +1,6 @@
 package com.peiyaoxin.flixster
 
+import android.content.res.Configuration
 import com.peiyaoxin.flixster.Movie
 import com.peiyaoxin.flixster.MovieAdapter
 import com.peiyaoxin.flixster.R
@@ -28,6 +29,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initList(this.resources.configuration.orientation)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        initList(newConfig.orientation)
+    }
+
+    private fun initList(orientation:Int) {
         setContentView(R.layout.activity_main)
         rvMovies = findViewById(R.id.rvMovies)
 
@@ -48,6 +58,7 @@ class MainActivity : AppCompatActivity() {
                 try {
                     val movieJsonArray = json.jsonObject.getJSONArray("results")
                     movies.addAll(Movie.fromJsonArray(movieJsonArray))
+                    movieAdapter.setOrientation(orientation)
                     movieAdapter.notifyDataSetChanged()
                     Log.i(TAG, "Movie list $movies")
                 } catch (e: JSONException) {

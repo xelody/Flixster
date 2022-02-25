@@ -1,6 +1,8 @@
 package com.peiyaoxin.flixster
 
+import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,8 @@ import com.bumptech.glide.Glide
 
 class MovieAdapter(private val context: Context, private val movies: List<Movie>)
     : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+
+    private var orientation = Configuration.ORIENTATION_PORTRAIT
 
     // Expensive operation: create a view
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,6 +30,10 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
     override fun getItemCount() = movies.size
 
+    fun setOrientation(orientation:Int) {
+        this.orientation = orientation
+    }
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivPoster = itemView.findViewById<ImageView>(R.id.ivPoster)
         private val tvTitle = itemView.findViewById<TextView>(R.id.tvTitle)
@@ -34,7 +42,11 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
         fun bind(movie: Movie) {
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            Glide.with(context).load(movie.posterImageUrl).into(ivPoster)
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                Glide.with(context).load(movie.posterImageUrl).into(ivPoster)
+            } else {
+                Glide.with(context).load(movie.backdropImageUrl).into(ivPoster)
+            }
         }
     }
 }
