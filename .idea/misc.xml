@@ -7,7 +7,9 @@
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.15586690017513136" />
         <entry key="app/src/main/res/layout-land/item_movie.xml" value="0.2119089316987741" />
         <entry key="app/src/main/res/layout-land/item_moview.xml" value="0.19483362521891417" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.182518115942029" />
+        <entry key="app/src/main/res/layout/activity_movie_trailer.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/item_movie.xml" value="0.182518115942029" />
       </map>
     </option>
